@@ -308,7 +308,7 @@ FROM Names
 GROUP BY State;
 
 -- So now just join the two tables together
-'''SELECT State, ROUND(num_nicole / num_babies * 100, 2) AS pct_nicole
+SELECT State, ROUND(num_nicole / num_babies * 100, 2) AS pct_nicole
 FROM
 
 (WITH count_nicole AS  (SELECT State, SUM(Births) AS num_nicole
@@ -324,6 +324,6 @@ SELECT cc.State, cc.num_nicole, ca.num_babies
 FROM count_nicole cc INNER JOIN count_all ca
     ON cc.State = ca.State) AS state_nicole_all
     
-    ORDER BY pct_nicole;'''
+    ORDER BY pct_nicole;
 
 -- Output shows RI had the highest percentage of babies born with the name Nicole and MS had the lowest.
