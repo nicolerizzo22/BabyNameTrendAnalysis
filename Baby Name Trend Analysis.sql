@@ -164,7 +164,7 @@ WHERE popularity < 4;
 
 SELECT * FROM
 (WITH babies_by_decade AS (SELECT (CASE WHEN Year BETWEEN 1980 AND 1989 THEN 'Eighties'
-										WHEN Year BETWEEN 1990 AND 1999 THEN 'Nineties'
+					WHEN Year BETWEEN 1990 AND 1999 THEN 'Nineties'
                                         WHEN Year BETWEEN 2000 and 2009 THEN 'Two_Thousands'
                                         ELSE 'None' END) AS Decade,
         Gender, Name, SUM(births) AS num_babies
@@ -185,7 +185,8 @@ FROM regions;
 -- Query to fix the discrepancy between New England and New_England
 WITH clean_regions AS
 	 (SELECT State, 
-	CASE WHEN Region = 'New England' THEN 'New_England' ELSE Region END AS clean_region
+	CASE WHEN Region = 'New England' THEN 'New_England' 
+	ELSE Region END AS clean_region
     FROM regions)
     
 SELECT DISTINCT clean_region FROM clean_regions;
@@ -195,7 +196,8 @@ SELECT DISTINCT clean_region FROM clean_regions;
 
 WITH clean_regions AS
 	 (SELECT State, 
-	CASE WHEN Region = 'New England' THEN 'New_England' ELSE Region END AS clean_region
+	CASE WHEN Region = 'New England' THEN 'New_England' 
+	ELSE Region END AS clean_region
     FROM regions)
     
 SELECT DISTINCT clean_region 
@@ -207,7 +209,8 @@ ON n.State = cr.State;
 
 WITH clean_regions AS
 	 (SELECT State, 
-	CASE WHEN Region = 'New England' THEN 'New_England' ELSE Region END AS clean_region
+	CASE WHEN Region = 'New England' THEN 'New_England' 
+	ELSE Region END AS clean_region
     FROM regions
     UNION
     SELECT 'MI' AS State, 'Midwest' AS Region)
@@ -220,7 +223,8 @@ ON n.State = cr.State;
 
 WITH clean_regions AS
 	 (SELECT State, 
-	CASE WHEN Region = 'New England' THEN 'New_England' ELSE Region END AS clean_region
+	CASE WHEN Region = 'New England' THEN 'New_England' 
+	ELSE Region END AS clean_region
     FROM regions
     UNION
     SELECT 'MI' AS State, 'Midwest' AS Region)
@@ -237,7 +241,8 @@ SELECT * FROM
 (WITH babies_by_region AS (	
         WITH clean_regions AS
 			 (SELECT State, 
-			CASE WHEN Region = 'New England' THEN 'New_England' ELSE Region END AS clean_region
+			CASE WHEN Region = 'New England' THEN 'New_England' 
+			ELSE Region END AS clean_region
 			FROM regions
 			UNION
 			SELECT 'MI' AS State, 'Midwest' AS Region)
@@ -303,7 +308,7 @@ FROM Names
 GROUP BY State;
 
 -- So now just join the two tables together
-SELECT State, ROUND(num_nicole / num_babies * 100, 2) AS pct_nicole
+'''SELECT State, ROUND(num_nicole / num_babies * 100, 2) AS pct_nicole
 FROM
 
 (WITH count_nicole AS  (SELECT State, SUM(Births) AS num_nicole
@@ -319,6 +324,6 @@ SELECT cc.State, cc.num_nicole, ca.num_babies
 FROM count_nicole cc INNER JOIN count_all ca
     ON cc.State = ca.State) AS state_nicole_all
     
-    ORDER BY pct_nicole;
+    ORDER BY pct_nicole;'''
 
 -- Output shows RI had the highest percentage of babies born with the name Nicole and MS had the lowest.
