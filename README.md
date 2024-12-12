@@ -1,4 +1,4 @@
-# 👶 Baby Name Trend Analysis – Write Up 👶
+# 👶 Baby Name Trend Analysis 👶
 
 ### The Situation: You’ve just been hired as a Data Analyst for a popular baby names website that collects data on the names that parents give their children each year.
 ### The Assignment: The baby names website is about to release their annual baby names report. You’ve been asked to dig into the baby names data to produce some interesting findings about baby names over the years to share in the report. 
