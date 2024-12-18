@@ -13,7 +13,7 @@ FROM names
 WHERE Gender = 'F'
 GROUP BY Name
 ORDER BY num_babies DESC
-LIMIT 1; -- jessica with 863,121 
+LIMIT 1; -- jessica at 863,121 
 
 
 -- 2. Find the overall most popular boy name
@@ -22,7 +22,7 @@ FROM names
 WHERE Gender = 'M'
 GROUP BY Name
 ORDER BY num_babies DESC
-LIMIT 1; 
+LIMIT 1; --michael at 1,376,418
 
 
 
